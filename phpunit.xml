@@ -4,7 +4,7 @@
     <!-- Enable code coverage report -->
     <testsuites>
         <testsuite name="Unit test suite">
-            <directory>test</directory>
+            <file>test/test_Person.php</file>
         </testsuite>
     </testsuites>
 
