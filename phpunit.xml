@@ -2,9 +2,15 @@
     <!-- ... other configuration settings ... -->
 
     <!-- Enable code coverage report -->
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>test</directory>
+        </testsuite>
+    </testsuites>
+
     <filter>
-        <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory>src/</directory>
+        <whitelist>
+            <directory suffix=".php">src/</directory>
         </whitelist>
     </filter>
 
