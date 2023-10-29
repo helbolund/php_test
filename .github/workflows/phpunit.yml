@@ -25,6 +25,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Code Coverage Report
-          path: junit.xml
+          path: coverage_report.html
           retention-days: 5
 

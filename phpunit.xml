@@ -16,7 +16,7 @@
 
     <logging>
         <junit outputFile="junit.xml"/>
-        <testdoxHtml outputFile="testdox.html"/>
+        <testdoxHtml outputFile="coverage_report.html"/>
         <!--log type="coverage-html" target="coverage-report/" charset="UTF-8" yui="true" highlight="true" lowUpperBound="50" highLowerBound="80" /-->
     </logging>
 </phpunit>
