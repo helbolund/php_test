@@ -20,3 +20,11 @@ jobs:
 
       - name: Run PHPUnit Tests
         run: vendor/bin/phpunit
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: Code Coverage Report
+          path: junit.xml
+          retention-days: 5
+
