@@ -3,18 +3,20 @@
 
     <!-- Enable code coverage report -->
     <testsuites>
-        <testsuite name="Project Test Suite">
+        <testsuite name="Unit test suite">
             <directory>test</directory>
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
+    <source>
+        <include>
             <directory suffix=".php">src/</directory>
-        </whitelist>
-    </filter>
+        </include>
+    </source>
 
     <logging>
-        <log type="coverage-html" target="coverage-report/" charset="UTF-8" yui="true" highlight="true" lowUpperBound="50" highLowerBound="80" />
+        <junit outputFile="junit.xml"/>
+        <testdoxHtml outputFile="testdox.html"/>
+        <!--log type="coverage-html" target="coverage-report/" charset="UTF-8" yui="true" highlight="true" lowUpperBound="50" highLowerBound="80" /-->
     </logging>
 </phpunit>
