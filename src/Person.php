@@ -13,7 +13,7 @@ class Person {
       echo "Hello, my name is " . $this->getFullName() . ".";
   }
 
-  public function getPhoner() {
+  public function getPhone() {
     return $this->phone;
   }
 }
