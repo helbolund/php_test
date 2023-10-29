@@ -12,4 +12,11 @@ class test_Person extends TestCase {
         $this->expectOutputString('Hello, my name is John Doe.');
         $person1->sayHello(); // Output: Hello, my name is John Doe.
     }
+
+    public function testPhoneNumber() {
+        $person1 = new Person();
+        $person1->phone = "86123456";
+        $result = $person1->getPhone();
+        $this->assertEquals("86123457", $result);
+    }
 }
