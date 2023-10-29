@@ -3,7 +3,7 @@ use PHPUnit\Framework\TestCase;
 
 require_once 'src/Person.php'; // Adjust the path accordingly
 
-class YourCodeTest extends TestCase {
+class test_Person extends TestCase {
     public function testSomeFunction() {
         // Your test logic here
         $person1 = new Person();
