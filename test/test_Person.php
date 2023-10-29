@@ -17,6 +17,6 @@ class test_Person extends TestCase {
         $person1 = new Person();
         $person1->phone = "86123456";
         $result = $person1->getPhone();
-        $this->assertEquals("86123457", $result);
+        $this->assertEquals("86123456", $result);
     }
 }
