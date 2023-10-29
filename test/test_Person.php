@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-require_once 'src/YourCode.php'; // Adjust the path accordingly
+require_once 'src/Person.php'; // Adjust the path accordingly
 
 class YourCodeTest extends TestCase {
     public function testSomeFunction() {
