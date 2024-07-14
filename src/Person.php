@@ -4,6 +4,7 @@ class Person {
   public $firstName;
   public $lastName;
   public $phone;
+  public $shoeSize;
 
   public function getFullName() {
       return $this->firstName . ' ' . $this->lastName;
@@ -15,6 +16,10 @@ class Person {
 
   public function getPhone() {
     return $this->phone;
+  }
+
+  pubic function getFootSize() {
+    return $this->shoeSize;
   }
 }
 

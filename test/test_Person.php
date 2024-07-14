@@ -19,4 +19,11 @@ class test_Person extends TestCase {
         $result = $person1->getPhone();
         $this->assertEquals("86123456", $result);
     }
+
+    public function testShoeSize() {
+        $person = new Person();
+        $person->shoeSize = 42;
+        $shoeSize = $person->getShoeSize();
+        $this->assertEquals(42, $shoeSize);
+    }
 }
