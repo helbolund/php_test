@@ -35,7 +35,7 @@ jobs:
           username: ${{secrets.username}}
           password: ${{secrets.password}}
           port: 22
-          dry-run: true
+          dry-run: false
           uploads: |
             ./src/ => ./php_test/
           ignore: |
