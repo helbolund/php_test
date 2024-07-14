@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 
         with:
           fetch-depth: 0
 
@@ -58,6 +58,6 @@ jobs:
 
           # Path for specific folder on server for files deployment
           remote-path: /customers/5/e/0/helbolund.dk/httpd.www/php_test/
-          local-path: ./src/
+          #local-path: ./src/
 
 
