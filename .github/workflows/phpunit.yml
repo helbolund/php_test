@@ -37,8 +37,25 @@ jobs:
           port: 22
           dry-run: false
           uploads: |
-            ./src/ => ./php_test/
+            ./src/ => /customers/5/e/0/helbolund.dk/httpd.www/php_test/
           ignore: |
             !index.html
             !.htaccess
+
+      # - name: SFTP-Deploy-Action
+      #   uses: milanmk/actions-file-deployer@master
+      #   with:
+      #     remote-protocol: sftp
+
+      #     # Credentials for SFTP access to server using GitHub secrets
+      #     remote-host: ${{ secrets.SFTP_HOST }}
+      #     # Port for SFTP access to server
+      #     remote-port: 22
+      #     remote-user: ${{ secrets.SFTP_USER }}
+      #     remote-password: ${{ secrets.SFTP_PASSWORD }}
+
+      #     # Path for specific folder on server for files deployment
+      #     remote-path: /customers/5/e/0/helbolund.dk/httpd.www/php_test/
+      #     local-path: ./src/
+
 
