@@ -27,4 +27,18 @@ jobs:
           name: Code Coverage Report
           path: coverage_report.html
           retention-days: 5
+      
+      - name: Publish files to server
+        uses: Dylan700/sftp-upload-action@latest
+        with:
+          server: ${{secrets.site}}
+          username: ${{secrets.username}}
+          key: ${{secrets.password}}
+          # passphrase: secrets.passphrase
+          port: 22
+          uploads: |
+            ./src/ => ./php_test/
+          ignore: |
+            !index.html
+            !.htaccess
 
