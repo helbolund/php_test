@@ -33,9 +33,9 @@ jobs:
         with:
           server: ${{secrets.site}}
           username: ${{secrets.username}}
-          key: ${{secrets.password}}
-          # passphrase: secrets.passphrase
+          password: ${{secrets.password}}
           port: 22
+          dry-run: true
           uploads: |
             ./src/ => ./php_test/
           ignore: |
