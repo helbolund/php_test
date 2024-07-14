@@ -18,7 +18,7 @@ class Person {
     return $this->phone;
   }
 
-  public function getFootSize() {
+  public function getShoeSize() {
     return $this->shoeSize;
   }
 }
