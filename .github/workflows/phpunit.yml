@@ -21,7 +21,7 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
     - run: pwd
-    
+    - run: ls -al /home/runner/work/php_test/php_test
     # - name: 📂 Sync files
     #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
     #   with:
