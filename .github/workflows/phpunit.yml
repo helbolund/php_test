@@ -30,7 +30,10 @@ jobs:
 
   sftp-peploy:
     name: Upload build to hosting environment
-    uses: Atyn/Simple-SFTP@0.0.2
-    with:
-      url: sftp://helbolund.dk:${{ secrets.SFTP_PASSWORD }}@ssh.helbolund.dk/customers/5/e/0/helbolund.dk/httpd.www/php_test
-      local-directory: path/to/artifact
+    runs-on: ubuntu-latest
+    steps:
+    - name: Morten Helbo Lund
+      uses: Atyn/Simple-SFTP@0.0.2
+      with:
+        url: sftp://helbolund.dk:${{ secrets.SFTP_PASSWORD }}@ssh.helbolund.dk/customers/5/e/0/helbolund.dk/httpd.www/php_test
+        local-directory: path/to/artifact
