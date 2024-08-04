@@ -3,61 +3,14 @@ name: PHPUnit Tests
 on: [push, pull_request]
 
 jobs:
-  phpunit:
+  pehaape-junid:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.3  # Adjust the PHP version as needed
-
-      - name: Install Composer Dependencies
-        run: composer install
-
-      - name: Run PHPUnit Tests
-        run: vendor/bin/phpunit
-
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
-        with:
-          name: Code Coverage Report
-          path: coverage_report.html
-          retention-days: 5
-      
-      # - name: Publish files to server
-      #   uses: Dylan700/sftp-upload-action@latest
-      #   with:
-      #     server: ${{secrets.site}}
-      #     username: ${{secrets.username}}
-      #     password: ${{secrets.password}}
-      #     port: 22
-      #     dry-run: false
-      #     uploads: |
-      #       ./src/ => /customers/5/e/0/helbolund.dk/httpd.www/php_test/
-      #     ignore: |
-      #       !index.html
-      #       !.htaccess
-
-      - name: SFTP-Deploy-Action
-        uses: milanmk/actions-file-deployer@master
-        with:
-          remote-protocol: sftp
-
-          # Credentials for SFTP access to server using GitHub secrets
-          remote-host: ${{ secrets.SFTP_HOST }}
-          # Port for SFTP access to server
-          remote-port: 22
-          remote-user: ${{ secrets.SFTP_USER }}
-          remote-password: ${{ secrets.SFTP_PASSWORD }}
-
-          # Path for specific folder on server for files deployment
-          remote-path: /customers/5/e/0/helbolund.dk/httpd.www/php_test/
-          local-path: ./src/
-
+    - run: mkdir -p path/to/artifact
+    - run: echo hello > path/to/artifact/world.txt
+    - uses: actions/upload-artifact@v4
+      with:
+        name: my-artifact
+        path: path/to/artifact/world.txt
 
