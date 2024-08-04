@@ -1,8 +1,27 @@
-name: PHPUnit Tests
+name: Deploy to one.com
 
 on: [push, pull_request]
 
 jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install LFTP
+      run: sudo apt-get install lftp
+
+    - name: Deploy files via SFTP
+      env:
+        SFTP_HOST: ssh.helbolund.dk
+        SFTP_USERNAME: helbolund.dk
+        SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+        SFTP_PORT: 22
+      run: |
+        lftp -u $SFTP_USERNAME,$SFTP_PASSWORD -e "mirror -R /home/runner/work/php_test/php_test/src /customers/5/e/0/helbolund.dk/httpd.www/php_test; quit" -p $SFTP_PORT $SFTP_HOST
+
   pehaape-junid:
     runs-on: ubuntu-latest
 
