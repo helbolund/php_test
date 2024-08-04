@@ -39,7 +39,7 @@ jobs:
         password: ${{ secrets.SFTP_PASSWORD }}
         port: 22
         uploads: |
-          /home/runner/work/php_test/php_test/src => /customers/5/e/0/helbolund.dk/httpd.www/php_test
+          /home/runner/work/php_test/php_test/src/Person.php => /customers/5/e/0/helbolund.dk/httpd.www/php_test/.
         ignore: |
           !index.html
           !.htaccess
