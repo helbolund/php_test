@@ -27,3 +27,10 @@ jobs:
         server: ssh.helbolund.dk
         username: helbolund.dk
         password: ${{ secrets.SFTP_PASSWORD }}
+
+  sftp-peploy:
+    name: Upload build to hosting environment
+    uses: Atyn/Simple-SFTP
+    with:
+      url: sftp://helbolund.dk:${{ secrets.SFTP_PASSWORD }}@ssh.helbolund.dk/customers/5/e/0/helbolund.dk/httpd.www/php_test
+      local-directory: path/to/artifact
