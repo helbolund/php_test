@@ -20,8 +20,7 @@ jobs:
         SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
         SFTP_PORT: 22
       run: |
-        lftp --version
-        lftp -u helbolund_dk,$SFTP_PASSWORD -e "mirror -R /home/runner/work/php_test/php_test/src/ /customers/5/e/0/helbolund.dk/httpd.www/php_test/; quit" -p 22 ssh.helbolund.dk
+        lftp -d -u helbolund_dk,$SFTP_PASSWORD -e "mirror -R /home/runner/work/php_test/php_test/src/ /customers/5/e/0/helbolund.dk/httpd.www/php_test/; quit" -p 22 ssh.helbolund.dk
         
       # lftp -u $SFTP_USERNAME,$SFTP_PASSWORD -e "mirror -R /home/runner/work/php_test/php_test/src /customers/5/e/0/helbolund.dk/httpd.www/php_test; quit" -p $SFTP_PORT $SFTP_HOST
 
