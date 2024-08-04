@@ -20,13 +20,14 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
+    - run: pwd
     
     # - name: 📂 Sync files
     #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
     #   with:
     #     server: ssh.helbolund.dk
     #     username: helbolund.dk
-    #     password: ${{ secrets.SFTP_PASSWORD }}
+    #     password: $(( secrets.SFTP_PASSWORD ))
 
     - name: 
       # uses: actions/checkout@v4
