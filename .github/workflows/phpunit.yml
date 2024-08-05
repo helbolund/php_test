@@ -1,30 +1,35 @@
-name: PHPUnit Tests
+name: Deploy to one.com
 
 on: [push, pull_request]
 
 jobs:
-  phpunit:
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.2  # Adjust the PHP version as needed
+    - name: Install LFTP
+      run: sudo apt-get install lftp
 
-      - name: Install Composer Dependencies
-        run: composer install
+    - name: Deploy files via SFTP
+      env:
+        SFTP_HOST: ssh.helbolund.dk
+        SFTP_USERNAME: helbolund.dk
+        SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+        SFTP_PORT: 22
+      run: |
+        lftp -d -u helbolund.dk,$SFTP_PASSWORD -e "set sftp:auto-confirm yes; mirror -R /home/runner/work/php_test/php_test/src/ /customers/5/e/0/helbolund.dk/httpd.www/php_test/; quit" -p 22 sftp://ssh.helbolund.dk
 
-      - name: Run PHPUnit Tests
-        run: vendor/bin/phpunit
+  php-junit:
+    runs-on: ubuntu-latest
 
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v3
-        with:
-          name: Code Coverage Report
-          path: coverage_report.html
-          retention-days: 5
-
+    steps:
+    - run: mkdir -p path/to/artifact
+    - run: echo hello > path/to/artifact/world.txt
+    - uses: actions/upload-artifact@v4
+      with:
+        name: my-artifact
+        path: path/to/artifact/world.txt
