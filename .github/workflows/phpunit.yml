@@ -3,7 +3,8 @@ name: Deploy to one.com
 on: [push, pull_request]
 
 jobs:
-  deploy:
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -21,10 +22,8 @@ jobs:
         SFTP_PORT: 22
       run: |
         lftp -d -u helbolund.dk,$SFTP_PASSWORD -e "set sftp:auto-confirm yes; mirror -R /home/runner/work/php_test/php_test/src/ /customers/5/e/0/helbolund.dk/httpd.www/php_test/; quit" -p 22 sftp://ssh.helbolund.dk
-        
-      # lftp -u $SFTP_USERNAME,$SFTP_PASSWORD -e "mirror -R /home/runner/work/php_test/php_test/src /customers/5/e/0/helbolund.dk/httpd.www/php_test; quit" -p $SFTP_PORT $SFTP_HOST
 
-  pehaape-junid:
+  php-junit:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,53 +33,3 @@ jobs:
       with:
         name: my-artifact
         path: path/to/artifact/world.txt
-
-  web-deploy:
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v4
-    - run: pwd
-    - run: ls -al /home/runner/work/php_test/php_test
-    - run: cat /home/runner/work/php_test/php_test/src/Person.php
-    # - name: 📂 Sync files
-    #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-    #   with:
-    #     server: ssh.helbolund.dk
-    #     username: helbolund.dk
-    #     password: $(( secrets.SFTP_PASSWORD ))
-
-    - name: 
-      # uses: actions/checkout@v4
-      uses: Dylan700/sftp-upload-action@latest
-      with:
-        server: ssh.helbolund.dk
-        username: helbolund.dk
-        password: ${{ secrets.SFTP_PASSWORD }}
-        port: 22
-        uploads: |
-          /home/runner/work/php_test/php_test/src/Person.php => /customers/5/e/0/helbolund.dk/httpd.www/php_test/.
-        ignore: |
-          !index.html
-          !.htaccess
-
-  # upload:
-  #   name: Upload build to hosting environment
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: MHL_step
-  #     uses: Atyn/Simple-SFTP
-  #     with:
-  #       url: sftp://USERNAME:PASSWORD@example.com/remote-directory
-  #       local-directory: build-output
-          
-  # sftp-peploy:
-  #   name: Upload build to hosting environment
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Morten Helbo Lund
-  #     uses: Atyn/Simple-SFTP@latest
-  #     with:
-  #       url: sftp://helbolund.dk:${{ secrets.SFTP_PASSWORD }}@ssh.helbolund.dk/customers/5/e/0/helbolund.dk/httpd.www/php_test
-  #       local-directory: path/to/artifact
