@@ -16,10 +16,10 @@ jobs:
 
     - name: Deploy files via SFTP
       env:
-        SFTP_HOST: ssh.helbolund.dk
-        SFTP_USERNAME: helbolund.dk
+        SFTP_HOST: ${{ secrets.SFTP_HOST }}
+        SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
         SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-        SFTP_PORT: 22
+        SFTP_PORT: ${{ secrets.SFTP_PORT }}
       run: |
         lftp -d -u helbolund.dk,$SFTP_PASSWORD -e "set sftp:auto-confirm yes; mirror -R /home/runner/work/php_test/php_test/src/ /customers/5/e/0/helbolund.dk/httpd.www/php_test/; quit" -p 22 sftp://ssh.helbolund.dk
 
